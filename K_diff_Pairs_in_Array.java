@@ -1,4 +1,7 @@
-/* Example: Given an array of distinct integer values, count the number of pairs of integers that have di erence k. For example, given the array {1, 7, 5, 9, 2, 12, 3} and the di erence k = 2,there are four pairs with difference2: (1, 3), (3, 5), (5, 7), (7, 9). */
+/* Example: Given an array of distinct integer values, 
+count the number of pairs of integers that have di erence k. 
+For example, given the array {1, 7, 5, 9, 2, 12, 3} and the di erence k = 2,there are four pairs with difference2: 
+(1, 3), (3, 5), (5, 7), (7, 9). */
 
 
 
