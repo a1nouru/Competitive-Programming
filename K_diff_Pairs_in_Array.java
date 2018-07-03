@@ -35,4 +35,16 @@ public class Main {
     }
 }
 
+/* Output
+
+1,3 
+7,5 
+5,3 
+9,7 
+3,1 
+
+Process finished with exit code 0
+
+*/
+
 
