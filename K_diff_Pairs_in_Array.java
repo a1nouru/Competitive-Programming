@@ -4,6 +4,8 @@ For example, given the array {1, 7, 5, 9, 2, 12, 3} and the di erence k = 2,ther
 (1, 3), (3, 5), (5, 7), (7, 9). */
 
 
+//Time complexity: Big O(n) where n is the number of elements in the array. 
+
 
 //********Author: Nouru Muneza*******
 package sample;
