@@ -1,0 +1,38 @@
+package sample;
+import java.util.Arrays;
+import java.util.List;
+import java.io.*;
+import java.util.*;
+
+/*
+Question: Given two sorted arrays, find the number of elements in common. The arrays are the same length and each has all distinct elements.
+A: 13 27 35 40 49 55 59
+B: 17 35 39 40 55 58 60
+
+When the lengths are not equal, make the elements from the array of the bigger length to be the key and then for extra keys just fill in NuLL
+ */
+public class Main {
+
+    public static void main(String[] args) {
+
+        /*A: 13 27 35 40 49 55 59
+        B: 17 35 39 40 55 58 60
+        */
+        int counter = 0;
+        Integer [] array1 = {13,27,35,40,49,55,59};
+        Integer [] array2  = {17,35,39,40,55,58,60};
+        HashMap<Integer, Integer> intMap = new HashMap<>();
+        int foundNum = 0;
+        for(int i = 0; i< array1.length; i++) //entering the
+        {
+            intMap.put(array1[i], array2[i]);
+            counter++;
+        }
+        for (Integer value : intMap.values())
+        {
+            if(intMap.containsKey(value)){
+                foundNum++;
+            }
+        }
+    }
+}
