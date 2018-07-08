@@ -36,7 +36,6 @@ public class Main {
                 counter++;
             }
         }
-
         System.out.println(counter);
     }
 }
