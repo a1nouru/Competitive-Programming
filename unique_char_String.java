@@ -15,7 +15,7 @@ contained in the string. The second time you see this character you can immediat
 
 */
 
-//The time complexity:BigO(n), where n is the length of the string. 
+//The time complexity:BigO(n), in case a string a unique, for loop runs throught the whole string of n size. 
 //The space complexity: BigO(1).
 
 public class Main {
