@@ -5,6 +5,16 @@ import java.io.*;
 import java.util.*;
 
 /*
+Given a smaller strings and a bigger string b, design an algorithm
+to  nd all permutations of the shorter string within the longer one
+s: abbc
+b: cbabadcbbabbcbabaabccbabc
+*/
+
+
+
+/*
+//Your Home-Work
 When the lengths are not equal, make the elements 
 from the array of the bigger length to be the key 
 and then for extra keys just fill in NuLL
