@@ -67,4 +67,5 @@ int main()
     for (int i=0; i<new_length; i++)
         printf("%c", str[i]);
     return 0;
+
 }
