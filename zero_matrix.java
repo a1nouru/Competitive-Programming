@@ -70,6 +70,7 @@ public class Main {
                 { 9, 10, 11, 12 },
                 { 1, 9, 0, 4 }
         };
+     
         setZeros(grid);
     }
 }
