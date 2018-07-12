@@ -8,8 +8,7 @@ import java.util.LinkedList;
 
 /**
  *****QUESTION******
- Remove Dups: Write code to remove duplicates from an unsorted linked list. FOLLOW UP
- How would you solve this problem if a temporary bu er is not allowed?
+ Remove Dups: Write code to remove duplicates from an unsorted linked list.
 
  EXPLANATION:
  The approach here is we are being naive about what the linkedlist contains but before this
@@ -72,4 +71,8 @@ public class Main {
 4
 6
 8
+
+
+How would you solve this problem if a temporary buffer is not allowed?
+IF NO BUFFER THEN WE USE 2 POINTERS: the faster pointer and slow pointer. 
  */
