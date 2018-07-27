@@ -9,8 +9,8 @@ public class Main {
 
     static class Graph {
 
-         int v;
-         LinkedList<Integer> adjArray[];
+        int v;
+        LinkedList<Integer> adjArray[];
 
         public Graph(int v) {
             this.v = v;
@@ -64,7 +64,9 @@ public class Main {
         }
 
         void DFS(int v){
-            boolean visited[] = new boolean[v];
+            boolean visited[] = new boolean[this.v];
+
+            DFSUtil(v,visited);
         }
 
         public static void main(String args[]) {
