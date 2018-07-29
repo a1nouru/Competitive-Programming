@@ -1,6 +1,3 @@
-
-
-
 package sample;
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +8,8 @@ public class Main {
 
     static class Graph {
 
-        int v;
-        LinkedList<Integer> adjArray[];
+       public static int v;
+       public static LinkedList<Integer> adjArray[];
 
         public Graph(int v) {
             this.v = v;
@@ -52,46 +49,57 @@ public class Main {
             }
         }
 
-        void BFS(int src){
-            // Mark all the vertices as not visited(By default
-            // set as false)
+       public static void BFS(int src){
+
             boolean visited[] = new boolean[v];
 
-            LinkedList<Integer> queue = new LinkedList<>();
+            LinkedList<Integer> queue = new LinkedList<Integer>();
+
             visited[src] = true;
+
             queue.add(src);
 
             while(queue.size() != 0){
-                src = queue.poll();
-                System.out.print(src+" ");
 
-                Iterator<Integer> iter = adjArray[src].listIterator();
+                int n = queue.poll();
+                System.out.print(n+" ");
+
+                Iterator<Integer> iter = adjArray[n].listIterator();
 
                 while(iter.hasNext()){
-                    Integer n = iter.next();
-                    if(!visited[n]){
-                        visited[n] = true;
-                        queue.add(n);
+
+                    int tempNum = iter.next();
+
+                    if(!visited[tempNum]){
+                        visited[tempNum] = true;
+                        queue.add(tempNum);
                     }
                 }
-
             }
         }
 
         public static void main(String args[]) {
             int v = 5;
-            Graph graph = new Graph(5);
+            Graph graph = new Graph(4);
 
             addEdge(graph, 0, 1);
-            addEdge(graph, 0, 4);
+            addEdge(graph, 0, 2);
             addEdge(graph, 1, 2);
-            addEdge(graph, 1, 3);
-            addEdge(graph, 1, 4);
+            addEdge(graph, 2, 0);
             addEdge(graph, 2, 3);
-            addEdge(graph, 3, 4);
+            addEdge(graph, 3, 3);
+          //  addEdge(graph, 3, 4);
+            
+//            addEdge(0, 1);
+//            g.addEdge(0, 2);
+//            g.addEdge(1, 2);
+//            g.addEdge(2, 0);
+//            g.addEdge(2, 3);
+//            g.addEdge(3, 3);
+
+            BFS(2);
 
             //printGraph(graph);
-            BFS(4);
         }
     }
 }
