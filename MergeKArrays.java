@@ -1,5 +1,4 @@
-package sample;
-
+//This problem can be solved by using a heap. The time is O(nlog(k)) where K is the number of Arrays and 
 
 import java.util.*;
 
