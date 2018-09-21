@@ -21,10 +21,10 @@ public static boolean exist(char [][] arr, String word){
         if (arr[i][j] == word.charAt(k)){
             if (k == word.length()-1) // we are at the end of the word and all the characters have been found.
                 return true;
-            else if( DFS(arr,word,i-1,j,k) //going left
-                || DFS(arr,word,i+1,j,k) //going right
-                || DFS(arr,word,i,j-1,k) //going down
-                || DFS(arr,word,i,j+1,k)) //going up
+            else if( DFS(arr,word,i-1,j,k+1) //going left
+                || DFS(arr,word,i+1,j,k+1) //going right
+                || DFS(arr,word,i,j-1,k+1) //going down
+                || DFS(arr,word,i,j+1,k+1)) //going up
                 return true;
         }
         return false;
