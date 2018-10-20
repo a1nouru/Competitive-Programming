@@ -31,7 +31,9 @@ Class Solution {
     TreeNode * lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if (!root || p == root || q == root) return root;
        TreeNode *left = lowestCommonAncestor(root-> left, p, q);
+            if(left == p || left == q) return left; //terminate if P or Q found 
        TreeNode *right = lowestCommonAncestor(root-> right, p , q);
+            if(right == p || right == q) return right; //terminate if P or Q found 
         if (left && right) return root;
         return left ? left : right;
     }
