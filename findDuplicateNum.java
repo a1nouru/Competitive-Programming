@@ -17,6 +17,8 @@ You must use only constant, O(1) extra space.
 Your runtime complexity should be less than O(n2).
 There is only one duplicate number in the array, but it could be repeated more than once.
 
+Notice that you can also use a modified Binary search to look for a duplicate. Big O would be (Nlogn)
+
 */
 
 public class Solution {
