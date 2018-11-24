@@ -61,6 +61,9 @@ class Solution {
     
     //Similar solution but easier to understand using a set and a Queue (BFS) Big O(2^n)
     
+    
+    //How it works, we remove char ( or ) at every iteration and then put them into queue and set
+    //and then poll again from queue and pass it to isValid() to verify if try and then add to result list if isValid is true. 
     public class Solution {
     public List<String> removeInvalidParentheses(String s) {
       List<String> res = new ArrayList<>();
