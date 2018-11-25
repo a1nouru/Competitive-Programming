@@ -23,9 +23,9 @@ public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInt
         ArrayList<Interval> result = new ArrayList<Interval>();
  
         for(Interval interval: intervals){
-            if(interval.end < newInterval.start){
+            if(interval.end < newInterval.start){ //no intersection of interval and newInterval 
                 result.add(interval);
-            }else if(interval.start > newInterval.end){
+            }else if(interval.start > newInterval.end){ //if newInterval is less than interval
                 result.add(newInterval);
                 newInterval = interval;        
             }else if(interval.end >= newInterval.start || interval.start <= newInterval.end){
