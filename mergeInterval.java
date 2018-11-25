@@ -30,9 +30,9 @@ class Solution {
         while (i < intervals.size() - 1) {
             Interval curr = intervals.get(i);
             Interval next = intervals.get(i + 1);    
-            if (next.start <= curr.end) { //if merge 
+            if (next.start <= curr.end) { //if intersection 
                 curr.end = Math.max(curr.end, next.end); //keep max end between curr and next 
-                intervals.remove(i + 1);
+                intervals.remove(i + 1); 
             } else {
                 i++;
             }
