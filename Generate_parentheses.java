@@ -13,25 +13,27 @@ For example, given n = 3, a solution set is:
 
  */
 
-public class Main {
-    public static List<String> para(int n){
-        List<String> list = new ArrayList<>();
-
-        dfs(list, "", n,n);
+class Solution {
+ public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<String>();
+        backtrack(list, new StringBuilder(), 0, 0, n);
         return list;
     }
-    public static void dfs(List<String> results, String s, int left, int right){
-        if(left > right) return;
-
-        if (left == 0 && right ==0){
-            results.add(s);
+    
+    public void backtrack(List<String> list, StringBuilder str, int open, int close, int max){
+        
+        if(str.length() == max*2){ //stopping condition, which should be at top everytime you write a backTrack solution
+            list.add(str.toString());
             return;
         }
-
-        if (left > 0){
-            dfs(results, s+'(', left-1, right+1 );
+        
+        if(open < max){
+            backtrack(list, str.append("("), open+1, close, max); //Entreé
+            str.deleteCharAt(str.length()-1); //Exit 
         }
-
-        if (right > 0)
-            dfs(results, s+')', left, right-1);
+        if(close < open){
+            backtrack(list, str.append(")"), open, close+1, max); //Entreé
+            str.deleteCharAt(str.length()-1); //Exit 
+        }
     }
+}
