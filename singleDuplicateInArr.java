@@ -18,17 +18,22 @@ Your runtime complexity should be less than O(n2).
 There is only one duplicate number in the array, but it could be repeated more than once.
 
 */
-class Solution {
+public class Solution {
+    //To better undrstand this, draw a function of domains and co-domains and then trace your 
     public int findDuplicate(int[] nums) {
-        if(nums == null) return -1;
-        if(nums.length == 0) return -1;
+        int slow = 0; //slow pointer 
+        int fast = 0; //fast pointer
         
-        Arrays.sort(nums);
-        int numIndex = -1;
-        for(int i = 0; i < nums.length-1; i++){
-            if(nums[i] == nums[i+1])
-                numIndex = i;
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]]; //2 moves at once
+        } while(slow != fast);
+         int find = 0;
+      
+        while(find != slow){
+            slow = nums[slow];
+            find = nums[find];
         }
-        return nums[numIndex];
+        return find;
     }
 }
