@@ -20,10 +20,19 @@ return its zigzag level order traversal as:
 
 */
 
-class Solution2 {
-
-    public List<List<Integer>> zizagTraverse(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        if(root == null) return new ArrayList<>();
+       Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int currentLevel = 1;
         int levelNumNodes = 0;
@@ -34,9 +43,9 @@ class Solution2 {
         while(!queue.isEmpty()){
             TreeNode current = queue.remove();
             if (flip)
-                level.add(current.val);
-            else
                 level.add(0, current.val);
+            else
+                level.add(current.val);
 
             currentLevel--;
 
@@ -59,6 +68,6 @@ class Solution2 {
                 level = new ArrayList<>();
             }
         }
-        return results;
+        return results; 
     }
 }
