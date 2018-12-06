@@ -26,15 +26,24 @@ Explanation: The LCA of nodes 5and 4is 5, since a node can be a descendant of it
 
 */
 
-Class Solution {
- public :
-    TreeNode * lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (!root || p == root || q == root) return root;
-       TreeNode *left = lowestCommonAncestor(root-> left, p, q);
-            if(left == p || left == q) return left; //terminate if P or Q found 
-       TreeNode *right = lowestCommonAncestor(root-> right, p , q);
-            if(right == p || right == q) return right; //terminate if P or Q found 
-        if (left && right) return root;
-        return left ? left : right;
-    }
-};
+class Solution {
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+ if (root == null || root == p || root == q){ //stopping condition 
+ return root;
+ }
+
+ TreeNode left = lowestCommonAncestor(root.left,p,q);
+ TreeNode right = lowestCommonAncestor(root.right,p,q);
+ 
+ if (left != null && right != null){//means left= p,right = q or the other way around 
+     return root;//this root must be the lowest ancestor
+ }
+ if (left != null){//means right == null,so left == p or left == lowest ancestor 
+     return left;
+ }
+ if (right != null){
+     return right;
+ }
+ return null;//means not find yet
+}
+}
