@@ -40,7 +40,6 @@ class Solution {
     Every rec call should correspond to the level of BT thus this is how we get to add root.val 
     */
     
-    //Space: O(log n) where n is the height of the tree.
     public void dfs(TreeNode root, List<Integer>result, int level){
         if(root == null) return;
         
