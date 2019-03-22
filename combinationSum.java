@@ -36,7 +36,8 @@ class Solution {
     return results;
     }
 
-    public void combinationSumHelper(List<List<Integer>> results, List<Integer> tempResult, int[] candidates,       int target, int start) {
+    public void combinationSumHelper(List<List<Integer>> results, List<Integer> tempResult, int[] candidates,int target,
+                                     int start) {
         if (target == 0) {
         results.add(new ArrayList<>(tempResult));
             return;
