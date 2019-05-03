@@ -16,17 +16,21 @@ The string can be segmented as "i like samsung"
 or "i like sam sung".
 */
 
-//For this problem assume we have a function that checks if a word isValid. 
-public boolean wordBreak(String str){
-  
-  if(str.length == 0) return true; //Base case.
-  
-  for(int i = 1; i < str.length; i++){
-    
-    //Check validity of str.substring(0,i) and do rec call on str.substring(i, str.length-1)
-    if(isValid(str.subString(0, i)) && wordBreak(i, str.length-1)){
-      return true; //or add to list if problem says to add to list 
+class Solution {
+    // visited keeps track of invalid substrings. 
+    Set visited = new HashSet();
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(visited.contains(s)) return false;
+        
+        for (String word : wordDict) {
+            if (s.startsWith(word)) {
+                
+                int len = word.length();
+                if (s.length() == len || wordBreak(s.substring(len), wordDict)) 
+                    return true;
+            }
+        }
+        visited.add(s);
+        return false;
     }
-  }
-  return false;
 }
