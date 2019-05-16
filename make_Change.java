@@ -1,44 +1,33 @@
 /*
+You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
 
-Given an integer representing a given amount of change, write a
-function to compute the total number of coins required to make
-that amount of change. You can assume that there is always a
-1¢ coin.
-eg. (assuming American coins: 1, 5, 10, and 25 cents)
-makeChange(1) = 1 (1)
-makeChange(6) = 2 (5 + 1)
-makeChange(49) = 7 (25 + 10 + 10 + 1 + 1 + 1 + 1)
+Example 1:
 
+Input: coins = [1, 2, 5], amount = 11
+Output: 3 
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+
+Input: coins = [2], amount = 3
+Output: -1
 */
 
-// Top down dynamic solution. Cache the values
-// as we compute them
-private int[] coins = new int[]{10, 6, 1};
-public int makeChange(int c) {
- // Initialize cache with values as -1
- int[] cache = new int[c + 1];
- for (int i = 1; i < c + 1; i++)
- cache[i] = -1;
- return makeChange(c, cache);
+class Solution{
+public int coinChange(int[] coins, int amount) {
+    int[] dp = new int[amount + 1];
+    for (int i = 1; i <= amount; i++) {
+        int min = Integer.MAX_VALUE;
+        for (int coin : coins) { //for all available coin changes in coins arr. 
+            if (coin <= i && dp[i - coin] != -1) {
+                 min = Math.min(min, dp[i - coin] + 1); //+1 cause change was made. 
+            }
+        }
+        dp[i] = (min == Integer.MAX_VALUE) ? -1 : min; //If change cant' be made(min will stay == Integer.MAX_VALUE), mark dp[i] as -1. 
+    }
+    return dp[amount];
+
+
 }
-// Overloaded recursive function
-private int makeChange(int c, int[] cache) {
- // Return the value if it’s in the cache
- if (cache[c] >= 0) return cache[c];
-
- int minCoins = Integer.MAX_VALUE;
-
- // Find the best coin
- for (int coin : coins) {
- if (c - coin >= 0) {
- int currMinCoins =
- makeChange(c - coin, cache);
- if (currMinCoins < minCoins)
- minCoins = currMinCoins;
- }
- }
-
- // Save the value into the cache
- cache[c] = minCoins + 1;
- return cache[c];
 }
+
+
