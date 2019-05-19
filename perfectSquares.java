@@ -11,29 +11,18 @@ Example 2:
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
-
-
 */
 
 class Solution {
-    HashMap<Integer,Integer> result = new HashMap<>();
+    // (i - j*j) is the subprobllem. 
     public int numSquares(int n) {
-        if(n == 0){
-            return 0;
+        int [] dp = new int [n+1];
+        for(int i = 1; i <= n; i++){
+            int min = Integer.MAX_VALUE;
+            for(int j = 1; j*j <= i; j++)
+                min = Math.min(min, dp[i - j*j] + 1);
+            dp[i] = min; 
         }
-        if(n == 1){
-            return 1;
-        }
-        if(result.containsKey(n)){
-            return result.get(n);
-        }
-        int max = (int)Math.sqrt(n);
-        int min = Integer.MAX_VALUE;
-        for(int i=max;i>=1;i--){
-            int c = numSquares(n - i*i)+1;
-            min = Math.min(min,c);
-        }
-        result.put(n,min);
-        return min;
+        return dp[n];
     }
 }
