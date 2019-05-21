@@ -30,7 +30,7 @@ class Solution {
         for(int i = 0; i <= n; i++){  //i is the length,not index
             if(s.charAt(0) != '0')  // 0 doesn't count 
                 dp[i] = dp[i-1];
-            int twoDigits = s.substring(i-2, i);  // 2 digits 
+            int twoDigits = Integer.valueOf(s.substring(i-2, i)); // 2 digits 
             if(twoDigits >= 10 && twoDigits <= 26)
                 dp[i] += dp[i-2];  //Adding all ways 
         }
