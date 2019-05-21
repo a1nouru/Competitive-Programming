@@ -23,16 +23,16 @@ class Solution {
     public int numDecodings(String s) {
         if (s == null || s.lengthf() == 0) return 0;
         int n = s.length();
-        int [] dp = new int [n+1];
+        int [] dp = new int [n+1]; //dp[i]: The number of the ways for i length string (i=1..n)
         dp[0] = 1;
         dp[1] = s.charAt(0) == '0' ? 0 : 1;
         
-        for(int i = 0; i <= n; i++){
-            if(s.charAt(0) != '0') 
+        for(int i = 0; i <= n; i++){  //i is the length,not index
+            if(s.charAt(0) != '0')  // 0 doesn't count 
                 dp[i] = dp[i-1];
-            int twoDigits = s.substring(i-2, i);
+            int twoDigits = s.substring(i-2, i);  // 2 digits 
             if(twoDigits >= 10 && twoDigits <= 26)
-                dp[i] += dp[i-2];
+                dp[i] += dp[i-2];  //Adding all ways 
         }
     }
 }
