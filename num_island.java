@@ -24,36 +24,31 @@ Output: 3
  */
 
 //Big O = m * n * log(K)
-public class Main {
-    public static int islandCount(char [][]grid){
-        if (grid == null) return 0;
-        int m = grid.length;
-        int n = grid[0].length;
+class Solution {
+    public int numIslands(char[][] grid) {
+        if ( grid == null || grid.length == 0 || grid[0].length == 0) return 0;
+        
+        boolean [][] visited = new boolean [grid.length][grid[0].length];
         int count = 0;
-        for (int i = 0; i < m; i++){
-
-            for (int j = 0; i < n; j++){
-                if (grid[i][j] == '1'){
-                    dfs(grid,i,j);
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == '1' && visited[i][j] != true){
+                    dfs(grid,i,j,visited);
                     count++;
                 }
-
             }
         }
         return count;
     }
-
-    public static void dfs(char [][]grid, int i, int j){
-        int m = grid.length;
-        int n = grid[0].length;
-
-        if (i < 0 || i > m-1 || j < 0 || j > n-1 || grid[i][j] != '1' )
+    
+    public void dfs(char [][] grid, int i, int j, boolean [][] visited){
+        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || visited[i][j] || grid[i][j] != '1') 
             return;
-
-        grid[i][j] = '#'; //Any char basically, we are just trying to remove already visited 1s
-
-        dfs(grid,i+i, j);
-        dfs(grid,i-1,j);
-        dfs(grid, i, j+1);
-        dfs(grid,i,j-1);
+        
+        visited[i][j] = true;
+        dfs(grid,i+1,j,visited);
+        dfs(grid,i-1,j,visited);
+        dfs(grid,i,j+1,visited);
+        dfs(grid,i,j-1,visited);
     }
+}
