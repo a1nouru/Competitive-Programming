@@ -21,3 +21,4 @@ public boolean isValidBST(TreeNode p, double min, double max){
  
     return isValidBST(p.left, min, p.val) && isValidBST(p.right, p.val, max);
 }
+ 
