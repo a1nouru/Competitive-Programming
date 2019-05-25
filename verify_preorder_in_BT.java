@@ -45,12 +45,11 @@ provides two out degrees. If a serialization is correct, diff should never be ne
 
 */
 
-
 public boolean isValidSerialization(String preorder) {
     String[] nodes = preorder.split(",");
     int diff = 1;
     for (String node: nodes) {
-        if (--diff < 0) return false;
+        if (--diff < 0) return false; //for every node we visit, we decrement the total nodes in BT. 
         if (!node.equals("#")) diff += 2;
     }
     return diff == 0;
