@@ -8,17 +8,20 @@ the method still cost O(n).
 The second solution below can handle violations close to root node faster.
 */
 
-public boolean isValidBST(TreeNode root) {
-    return isValidBST(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);    
-}
- 
-public boolean isValidBST(TreeNode p, double min, double max){
-    if(p==null) 
-        return true;
- 
-    if(p.val <= min || p.val >= max)
-        return false;
- 
-    return isValidBST(p.left, min, p.val) && isValidBST(p.right, p.val, max);
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        
+        helper(root, res);
+        return res; 
+    }
+    
+    public void helper(TreeNode root, List<Integer> res){
+        if (root == null) return;
+        
+        helper(root.left, res);
+        res.add(root.val);
+        helper(root.right, res);
+    } 
 }
  
