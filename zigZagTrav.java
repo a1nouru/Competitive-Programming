@@ -19,7 +19,6 @@ return its zigzag level order traversal as:
 ]
 
 */
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -31,43 +30,41 @@ return its zigzag level order traversal as:
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        if(root == null) return new ArrayList<>();
-       Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        int currentLevel = 1;
-        int levelNumNodes = 0;
-
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
-        List<Integer> level = new ArrayList<Integer>();
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+        
+        Queue<TreeNode> que = new LinkedList<>();
+        List<Integer> temp = new ArrayList<>();
+        int currLevel = 1, numNodes = 0;
         boolean flip = false;
-        while(!queue.isEmpty()){
-            TreeNode current = queue.remove();
-            if (flip)
-                level.add(0, current.val);
-            else
-                level.add(current.val);
-
-            currentLevel--;
-
-            if (current.left != null){
-                queue.add(current.left);
-                levelNumNodes++;
+        que.add(root);
+        
+        while(!que.isEmpty()){
+            TreeNode currNode = que.remove();
+            if(flip) temp.add(0, currNode.val); else temp.add(currNode.val);
+            currLevel --;
+            
+            if(currNode.left != null){
+                que.add(currNode.left);
+                numNodes++;
             }
-
-            if (current.right != null){
-                queue.add(current.right);
-                levelNumNodes++;
+            
+            if(currNode.right != null){
+                que.add(currNode.right);
+                numNodes++;
             }
-
-            if (currentLevel == 0){
-                currentLevel = levelNumNodes;
-                levelNumNodes = 0;
-                flip = !flip;
-                results.add(level);
-
-                level = new ArrayList<>();
+            
+            if(currLevel == 0){
+                currLevel = numNodes;
+                numNodes = 0;
+                flip = (!flip);
+                res.add(temp);
+                temp = new ArrayList<>();
             }
         }
-        return results; 
+        return res;
     }
 }
+
+
+
