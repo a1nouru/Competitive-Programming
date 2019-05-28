@@ -46,19 +46,11 @@ Output: false
  * }
  */
 class Solution {
-    public boolean dfs(TreeNode p, TreeNode q){
-    if(p == null && q == null){
-        return true;
-    } else if (p == null && q != null){
-        return false;
-    } else if(q == null && p != null){
-        return false;
-    }
-    return dfs(p.left, q.left) && dfs(p.right, q.right) && p.val == q.val;
-}
-
-public boolean isSameTree(TreeNode p, TreeNode q) {
-    return dfs(p, q);
-}
+          public boolean isSameTree(TreeNode p, TreeNode q) {
+                    if (p == null && q == null) return true; 
+		if (p == null || q == null) return false;
+    
+		return (q.val == p.val) && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+	}
 }
 
