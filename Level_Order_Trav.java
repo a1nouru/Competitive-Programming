@@ -27,23 +27,23 @@ return its level order traversal as:
  * }
  */
 class Solution {
+    
     public List<List<Integer>> levelOrder(TreeNode root) {
-  List<List<Integer>> res = new ArrayList<List<Integer>>();
-  levelOrder(root, res, 0);
-  return res;
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        dfs(root, 0, map);
+        
+        return new ArrayList<>(map.values());
+    }
+    
+    public void dfs(TreeNode root, int index, Map<Integer, List<Integer>> map){
+        if (root == null) return; 
+        if (map.get(index) == null){  
+            map.put(index, new ArrayList<>()); 
+            map.get(index).add(root.val);
+        }
+        else map.get(index).add(root.val);
+        
+        dfs(root.left, index+1, map);
+        dfs(root.right, index+1, map);
+    }
 }
-
-public void levelOrder(TreeNode root, List<List<Integer>> res, int level){
-  if(root == null) return;
-  if(level >= res.size()){ //if level exceeds size of res then create new list to accomodate new level's nodes. 
-    res.add(new ArrayList<Integer>());
-  }
-  
-  res.get(level).add(root.val); //Get corresponding level list in res. This is the same level as map.get(level).add(root.val);
-  levelOrder(root.left, res, level+1);
-  levelOrder(root.right, res, level+1);
-
-}
-
-}
-
