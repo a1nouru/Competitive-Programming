@@ -27,23 +27,13 @@ Explanation: The LCA of nodes 5and 4is 5, since a node can be a descendant of it
 */
 
 class Solution {
-public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
- if (root == null || root == p || root == q){ //stopping condition 
- return root;
- }
-
- TreeNode left = lowestCommonAncestor(root.left,p,q);
- TreeNode right = lowestCommonAncestor(root.right,p,q);
- 
- if (left != null && right != null){//means left= p,right = q or the other way around 
-     return root;//this root must be the lowest ancestor
- }
- if (left != null){//means right == null,so left == p or left == lowest ancestor 
-     return left;
- }
- if (right != null){
-     return right;
- }
- return null;//means not find yet
-}
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == q || root == p) return root;
+        
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        
+        if(left != null && right != null) return root; //Either left or right is p or q. This root must be the lowest ancestor
+        return left == null ? right:left; 
+    }
 }
