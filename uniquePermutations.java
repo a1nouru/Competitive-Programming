@@ -15,27 +15,29 @@ Output:
 */
 
 class Solution {
+    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> permuteUnique(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
-        permut(nums, new boolean[nums.length], nums.length, new ArrayList<>(), res);
-        return res;
+        boolean [] visited = new boolean [nums.length];
+        helper(nums, visited, new ArrayList<>());
+        return res; 
     }
     
-    private void permut(int[] nums, boolean[] visited, int rest, List<Integer> cur, List<List<Integer>> res){
-        if(rest == 0){ //nums.length == cur.length ? can also work 
-            res.add(new ArrayList<>(cur));
-            return;
+    public void helper(int [] nums, boolean [] visited, List<Integer> temp){
+        if (temp.size() == nums.length){
+            res.add(new ArrayList<>(temp));
+            return; 
         }
+        
         for(int i = 0; i < nums.length; i++){
-            if(visited[i] || (i != 0 && nums[i - i] == nums[i] && !visited[i - 1])) continue; //check for visit || or duplicate || prev not visited
-            visited[i] = true;
-            rest--;
-            cur.add(nums[i]);
-            permut(nums, visited, rest, cur, res);
-            cur.remove(cur.size() - 1);
-            rest++;
-            visited[i] = false;
+            if (visited[i] || (i > 0 && nums[i] == nums[i-1] && !visited[i-1])) continue; //In a case where curr elemet is == to prev elem and prev element has been cleared to be used again, it means you are 
+            else {
+                visited[i] = true;
+                temp.add(nums[i]);
+                helper(nums, visited, temp);
+                visited[i] = false; 
+                temp.remove(temp.size()-1);
+            }   
         }
     }
-}
+}                                                                                       
