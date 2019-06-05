@@ -16,29 +16,22 @@ Output:
 */
 
 class Solution {
-public List<List<Integer>> combine(int n, int k) {
-List list = new ArrayList();
-    
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
-		boolean[] used=new boolean[n+1];
-		helper(result,list,used,k,1); 
-        return result;
-}
-    
-public static void helper(List<List<Integer>> result, List<Integer> list, boolean[] used, int k, int start) {
-	if (list.size() == k) {
-		result.add(new ArrayList<Integer>(list));
-		return;
-	}
-
-	for (int i = start; i < used.length; i++) {
-		if (!used[i]) {
-			list.add(i);
-			used[i] = true;
-			helper(result, list, used, k, i + 1);
-			used[i] = false;
-			list.remove(list.size() - 1);
-		}
-	}
-}
+    List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> combine(int n, int k) {
+        helper(n, k, 1, new ArrayList<>());
+        return res;
+    }
+ 
+    public void helper(int n, int k, int indx, List<Integer> temp){
+        if (temp.size() == k){
+            res.add(new ArrayList<>(temp));
+            return; 
+        }
+        
+        for(int i = indx; i <= n; i++){
+            temp.add(i);
+            helper(n, k, i+1, temp);
+            temp.remove(temp.size()-1);
+        }
+    }
 }
