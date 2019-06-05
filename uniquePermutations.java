@@ -17,7 +17,7 @@ Output:
 class Solution {
     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> permuteUnique(int[] nums) {
-        Arrays.sort(nums);
+        Arrays.sort(nums); // Put all similar elements next to each other. 
         boolean [] visited = new boolean [nums.length];
         helper(nums, visited, new ArrayList<>());
         return res; 
