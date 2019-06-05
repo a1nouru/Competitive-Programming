@@ -34,10 +34,8 @@ class Solution {
                 visited[i]=true;//entry
                 list.add(nums[i]);
                 combine(nums,visited,list,result);
-                //exit //to be the next starting num ie: if curr perm is 123 
-                //the next will be 132 since visited at 2 is false
                 visited[i]=false;
-                list.remove(list.size()-1); //prevent list from filling allowing next num to be added 
+                list.remove(list.size()-1);
             }
         }
     }
