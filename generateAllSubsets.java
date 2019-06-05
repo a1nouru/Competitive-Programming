@@ -22,25 +22,19 @@ Output:
 */
 
 class Solution {
+    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
-        // Backtracking
-        // Edge case
-        if(nums == null || nums.length == 0) return new ArrayList<>();
-        
-        List<Integer> temp = new ArrayList<>();
-        List<List<Integer>> result = new ArrayList<>();
-        helper(nums, 0, temp, result);
-        return result;
+        helper(nums, 0, new ArrayList<>());
+        return res;
     }
-    public void helper(int[] nums, int start, List<Integer> temp, List<List<Integer>> result) {
-        result.add(new ArrayList<>(temp)); //for every rec call, add temp to results. 
-        for(int i = start; i < nums.length; i++) {
-            // choose
+    
+    public void helper(int []nums, int indx, List<Integer>temp){
+        res.add(new ArrayList<>(temp));
+        
+        for (int i = indx; i < nums.length; i++){
             temp.add(nums[i]);
-            // explore
-            helper(nums, i + 1, temp, result);
-            // unchoose
-            temp.remove(temp.size() - 1); //remvove recently added item in temp to reconstruct(add next elem of num[i])
+            helper(nums, i + 1, temp);
+            temp.remove(temp.size()-1);
         }
     }
 }
