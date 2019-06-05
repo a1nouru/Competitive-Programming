@@ -30,7 +30,7 @@ class Solution {
         }
         
         for(int i = 0; i < nums.length; i++){
-            if (visited[i] || (i > 0 && nums[i] == nums[i-1] && !visited[i-1])) continue; //In a case where curr elemet is == to prev elem and prev element has been cleared to be used again, it means you are 
+            if (visited[i] || (i > 0 && nums[i] == nums[i-1] && !visited[i-1])) continue; //In a case where curr elemet is == to prev elem and prev element has been cleared to be used again.
             else {
                 visited[i] = true;
                 temp.add(nums[i]);
