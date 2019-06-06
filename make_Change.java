@@ -18,9 +18,8 @@ public int coinChange(int[] coins, int amount) {
     for (int i = 1; i <= amount; i++) {
         int min = Integer.MAX_VALUE;
         for (int coin : coins) { //for all available coin changes in coins arr. 
-            if (coin <= i && dp[i - coin] != -1) {
+            if (coin <= i && dp[i - coin] >= 0) //dp[i-coin] can't be -1. It has to be previously defined in order to be used by dp[i]
                  min = Math.min(min, dp[i - coin] + 1); //+1 cause change was made. 
-            }
         }
         dp[i] = (min == Integer.MAX_VALUE) ? -1 : min; //If change cant' be made(min will stay == Integer.MAX_VALUE), mark dp[i] as -1. 
     }
