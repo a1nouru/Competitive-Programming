@@ -14,7 +14,7 @@ public class Solution{
         List<Integer> list = new ArrayList<>();
         
         for(int num : nums){
-            if (list.isEmpty() || list.get(list.size()-1) < num)
+            if (list.isEmpty() || list.get(list.size()-1) < num) // increasing senquence. 
                 list.add(num);
             else {
                 int index = binarySearch(list, 0, list.size()-1, num);
