@@ -11,6 +11,12 @@ k = 8,
 return 13.
 */ 
 
+/* 
+HOW THIS WORKS: 
+Essentially we are using the number of elements less than k to get closer to the kth smallest element. 
+If number of elems less than mid is less than k then lo = mid+1 else hi = end. Mid will eventually be equal to kth smallest 
+elem and low and hi will be equal hence exiting from the Binary search loop. 
+*/
 class Solution{
     public int kthSmallest(int [][] matrix, int k){
         if ( matrix == null || matrix.length == 0) return 0;
@@ -32,11 +38,10 @@ class Solution{
         while (i >= 0 && j < matrix[0].length){
             if (matrix[i][j] <= mid){ 
                 j++;
-                count += i+1; //num elemets less than mid 
+                count += i+1; // num elemets less than mid 
             }
             else i--;
         }
         return count;
     }
 }
-
