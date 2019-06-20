@@ -20,8 +20,8 @@ class Solution {
         
         for(int i=n-1; i >= 0; i--){
             for(int j=i; j < n; j++){ 
-                if(s.charAt(i) == s.charAt(j) && (i+1 > j-1 || dp[i+1][j-1] == true) ) {
-                    
+                if(s.charAt(i) == s.charAt(j) && (i+1 > j-1 || dp[i+1][j-1] == true) ) { 
+                    //dp[i+1][j-1] means prev smaller substring was a palindrome. Building on smaller previsously calculated palindromes.
                     if(str.length() < (j-i+1)) // max new pali.                      
                         str = s.substring(i, j+1);
                     dp[i][j] = true;
