@@ -24,27 +24,22 @@ Space Complexity for balanced tree: O(log n). Worst case (tree degenerated into 
  
 
 class Solution {
-    
     public int maxPathSum(TreeNode root) {
-        int[] result = new int[1];
-        result[0] = Integer.MIN_VALUE;
-        
-        maxPathSum(root, result);
-        
-        return result[0];
+        int [] res = new int[1];
+        res[0] = Integer.MIN_VALUE;
+        maxPathSum(root, res);
+        return res[0];
     }
     
     public int maxPathSum(TreeNode root, int[] max) {
-        if (root == null) {
-            return -1; 
-        }
+        if (root == null) return -1;
         
         int left = maxPathSum(root.left, max);
         int right = maxPathSum(root.right, max);
+            
+        int curSum = root.val + Math.max(left, 0) + Math.max(right, 0);
+        max[0] = Math.max(curSum, max[0]);
         
-        int cur = root.val + Math.max(left, 0) + Math.max(right, 0);
-        if (cur > max[0]) max[0] = cur;
-        
-        return root.val + Math.max(Math.max(left, right), 0);
+       return root.val + Math.max(Math.max(left, right),0);
     }
 }
